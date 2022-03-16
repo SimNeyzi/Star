@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import App2 from './App2';
+import App from './App.js';
+import App2 from './App2.js';
 import './index.css';
 
 

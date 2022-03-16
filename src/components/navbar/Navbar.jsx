@@ -17,7 +17,7 @@ const Navbar = ({ toggle }) => {
               <NavLinks to='about'>About</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to='discover'>Discover</NavLinks>
+              <NavLinks to='discover'>Options</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to='services'>Star Finder</NavLinks>
@@ -27,7 +27,7 @@ const Navbar = ({ toggle }) => {
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+            <NavBtnLink to='/signin'>Get Started</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>

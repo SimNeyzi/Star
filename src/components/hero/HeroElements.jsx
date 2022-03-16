@@ -38,7 +38,7 @@ export const VideoBg = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.2;
+  opacity: 0.8;
 `
 
 export const HeroContent = styled.div`

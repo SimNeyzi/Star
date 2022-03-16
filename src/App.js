@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header} from './containers';
-import { Home } from './containers'
+import { Header} from './containers/index.js';
+import { Home } from './containers/index.js'
 import {BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
 

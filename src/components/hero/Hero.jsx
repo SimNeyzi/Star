@@ -17,7 +17,7 @@ const Hero = () => {
       <HeroContent>
         <HeroH1>Open up the sky to others</HeroH1>
         <HeroP>
-          Unique, personal and eternal
+        Name a star and give the brightest gift in the galaxy
         </HeroP>
         <HeroBtnWrapper>
           <Button
@@ -27,7 +27,7 @@ const Hero = () => {
           primary='true'
           dark='true'
           >
-            Get started {hover ? <ArrowForward /> : <ArrowRight />}
+            Name a star {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </HeroBtnWrapper>
       </HeroContent>
