@@ -31,10 +31,6 @@ const Home = () => {
       {/* <Info {...homeObjTwo} /> */}
       <Info {...homeObjThree} />
       <Services />
-      <div style={{ height: 500, width: '80%' }}>
-      <button onClick={() => clearCacheData()} >
-        Clear Cache Data</button>
-    </div>
     </div>
   )
 }

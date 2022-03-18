@@ -2464,8 +2464,9 @@ VirtualSky.prototype.pickRandomStar = function(){
 
 VirtualSky.prototype.mapStarCards = function(cards){
 	S("div#card").remove()
-	cards.map((card) => S("div#cards").prepend('<div id="card" style="color:#fff;">'+ String(card) +'</div>'));
-
+	S("img").remove()
+	S("div#cardsContainer").remove();
+	cards.map((card) => S("div#cards").prepend(`<div id="cardsContainer">${S("input#name")[0].value}<img src="./svg-5.svg" "alt="star" id="card"/>${this.pointers[this.pointers.length - 1].uniqueId}</div>`));
 }
 
 VirtualSky.prototype.changeAzimuth = function(inc){

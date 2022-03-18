@@ -25,31 +25,33 @@
 
   </head>
   <body>
-    <div>
     <div id="root"></div>
-
     <div class="content gradient__bg">
-
-      <form id="form" style="color:azure">
-        <div class="form-example">
-          <label for="name">Enter your name: </label>
-          <input type="text" name="name" id="name" required>
+      <form id="formContainer">
+        <div class="name">
+          <label for="name">Name: </label>
+          <div>
+            <input type="text" name="name" id="name" required>
+          </div>
         </div>
-        <div class="form-example">
-          <label for="email">Enter email: </label>
+
+        <div class="email">
+          <label for="email">Email: </label>
+          <div>
           <input type="email" name="email" id="email" required>
         </div>
-        <div class="form-example">
-          <input type="submit" id="submit" value="Submit">
+        </div>
+        <div class="submit">
+          <input type="submit" id="submit" value="Send">
         </div>
       </form>
 
-      <input id="inputt"></input>
-      <button id="search">Search</button>
-      <div id="starmap-splash" class="planetarium"></div>
-      <!-- <button id="moveit">Move to The Pleiades</button> -->
+      <div class="search">
+        <input class="searchInput"></input>
+        <button id="search">Search</button>
+    </div>
       <div id="cards"></div>
-
+      <div id="starmap-splash" class="planetarium"></div>
 
       <script>
       S(document).ready(function() {
@@ -75,8 +77,8 @@
           // });
 
           S('button#search').on('click',function(){
-                console.log(S('input#inputt')[0].value)
-                let value = S('input#inputt')[0].value
+                console.log(S('input.searchInput')[0].value)
+                let value = S('input.searchInput')[0].value
                 value = Number(value);
                 console.log(typeof value);
                 //vs.panTo(56.8690917,24.1053111,3000)
@@ -101,23 +103,12 @@
                 colour:'#fff',
                 // height: '100px',
                 uniqueId: Math.floor(Math.random() * 10000),
-                style: "border-radius:50px;"
+                // style: "border-radius:50px;"
             })
 
             cards.push(randomStar);
-            //return false;
-
-            console.log('cards: ', cards);
-
             vs.mapStarCards(cards);
-
-
           })
-
-          // console.log('is this a thing', vs.pointers);
-
-
-
 
         console.log('vs: ', vs);
       });
@@ -127,6 +118,5 @@
     <!-- <div id="root2"></div> -->
 
     <script language="javascript" type="text/javascript" src="formatexamples.js"></script>
-  </div>
   </body>
 </html>
