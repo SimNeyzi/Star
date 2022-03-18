@@ -29,8 +29,27 @@
     <div id="root"></div>
 
     <div class="content gradient__bg">
+
+      <form id="form" style="color:azure">
+        <div class="form-example">
+          <label for="name">Enter your name: </label>
+          <input type="text" name="name" id="name" required>
+        </div>
+        <div class="form-example">
+          <label for="email">Enter email: </label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <div class="form-example">
+          <input type="submit" id="submit" value="Submit">
+        </div>
+      </form>
+
+      <input id="inputt"></input>
+      <button id="search">Search</button>
       <div id="starmap-splash" class="planetarium"></div>
-      <button id="moveit">Move to The Pleiades</button>
+      <!-- <button id="moveit">Move to The Pleiades</button> -->
+      <div id="cards"></div>
+
 
       <script>
       S(document).ready(function() {
@@ -47,25 +66,58 @@
           // fontfamily: 'Manrope',
           az:90,
           showstarlabels:true,
-          scalestars:1.5,
+          scalestars:1.7,
           allowTransparency:true,
           constellationlabels:true});
 
-          S('button#moveit').on('click',function(){
-                vs.panTo(56.8690917,24.1053111,3000)
+          // S('button#moveit').on('click',function(){
+          //       vs.panTo(56.8690917,24.1053111,3000)
+          // });
+
+          S('button#search').on('click',function(){
+                console.log(S('input#inputt')[0].value)
+                let value = S('input#inputt')[0].value
+                value = Number(value);
+                console.log(typeof value);
+                //vs.panTo(56.8690917,24.1053111,3000)
+                vs.panTo(value);
           });
 
-          vs.addPointer({
-                ra:83.8220792,
-                dec:-3.3911111,
-                label:'Orion Nebula',
+          let cards = [];
+
+          S('input#submit').on('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            let randomStar = vs.pickRandomStar();
+
+
+            vs.addPointer({
+                ra:randomStar[2],
+                dec:randomStar[3],
+                label:S('input#name')[0].value,
                 // img:'https://www.nicepng.com/maxp/u2w7o0a9y3w7e6q8/',
-                url: 'https://www.reddit.com/',
-                az:90,
-                // html: 'html5',
-                colour:'rgb(255,255)',
+                // url: 'https://www.reddit.com/',
+                html: 'html5',
+                colour:'#fff',
                 // height: '100px',
-        })
+                uniqueId: Math.floor(Math.random() * 10000),
+                style: "border-radius:50px;"
+            })
+
+            cards.push(randomStar);
+            //return false;
+
+            console.log('cards: ', cards);
+
+            vs.mapStarCards(cards);
+
+
+          })
+
+          // console.log('is this a thing', vs.pointers);
+
+
+
 
         console.log('vs: ', vs);
       });
