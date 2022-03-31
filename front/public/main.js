@@ -1,6 +1,3 @@
-// const pool = require('../../back/db');
-// import pool from '../../back/db';
-
 function getStars () {
   axios
     .get('http://localhost:3001/api/stars', {timeout: 5000})
@@ -17,7 +14,15 @@ const mapStarCards = async function(card){
 
 function addStar(star) {
   axios
-    .post('http://localhost:3001/api/stars', {recipient: star.recipient, sender: star.sender, star_name: star.star_name})
+    .post('http://localhost:3001/api/stars', {
+      starName: star.starName,
+      date: star.date,
+      message: star.message,
+      recipient: star.recipient,
+      sender: star.sender,
+      starType: star.starType,
+      uniqueId: star.uniqueId
+    })
     .catch(err => console.log(err));
 }
 

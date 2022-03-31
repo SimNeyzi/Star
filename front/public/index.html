@@ -16,44 +16,55 @@
   <body>
     <div id="root"></div>
     <div class="content gradient__bg">
+      <div class="heading">Name a Star</div>
       <form id="formContainer">
         <div class="name">
-          <label for="name">Name: </label>
+          <label for="name">Star Name: </label>
           <div>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name">
+          </div>
+        </div>
+
+        <div class="date">
+          <label for="date">Date:</label>
+          <div>
+            <input type="date" name="date" id="date">
+          </div>
+        </div>
+
+        <div class="message">
+          <label for="message">Personalized Message:</label>
+          <div>
+            <textarea id="message" name="message"
+              rows="10" cols="1" placeholder="Enter your message here"></textarea>
           </div>
         </div>
 
         <div class="email">
-          <label for="email">Email: </label>
+          <label for="email">Recipient: </label>
           <div>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email">
           </div>
         </div>
 
         <div class="email">
           <label for="email">Your Email: </label>
           <div>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email">
           </div>
         </div>
 
         <div id="options">
-          <div class="h1">Options</div>
+          <div class="h1">Brightness of the Star</div>
           <div id="optionsWrapper">
             <div class="card">
               <img src="icon1.png" alt="icon1" />
-              <div class="h2">Silvernova</div>
+              <div class="h2">Visible</div>
 
             </div>
             <div class="card">
               <img src="icon2.png" alt="icon1" />
-              <div class="h2">Supernova</div>
-
-            </div>
-            <div class="card">
-              <img src="icon3.png" alt="icon1"/>
-              <div class="h2">Duonova</div>
+              <div class="h2">Bright</div>
 
             </div>
           </div>
@@ -93,12 +104,12 @@
           constellationlabels:true});
 
           S('button#search').on('click',function(){
-                console.log(S('input.searchInput')[0].value)
+                // console.log(S('input.searchInput')[0].value)
 
                 let value = S('input.searchInput')[0].value
 
                 value = Number(value);
-                console.log('value: ', value);
+                // console.log('value: ', value);
                 vs.panTo(value);
           });
 
@@ -109,17 +120,12 @@
             event.preventDefault();
             event.stopPropagation();
 
-            console.log('clicked option: ', event)
-
-            if (event.currentTarget.outerText === 'Silvernova') {
+            if (event.currentTarget.outerText === 'Visible') {
               selectedType = 'standard'
             } else {
               selectedType = 'bright'
             }
-
           })
-
-
 
           S('input#submit').on('click', function(event) {
             event.preventDefault();
@@ -129,8 +135,10 @@
             // star type code here
 
             console.log('selected type: ', selectedType);
-            console.log('burasi: ',vs.pickStar(selectedType));
+            // console.log('burasi: ',vs.pickStar(selectedType));
+
             let star = vs.pickStar(selectedType);
+
             console.log('picked star: ', star);
 
 
@@ -148,28 +156,30 @@
                 // style: "border-radius:50px;"
             })
 
-            console.log('random star: ', star);
+            // console.log('random star: ', star);
             star.label = S('input#name')[0].value;
 
 
             addStar({
-              star_name: S('input#name')[0].value,
+              starName: S('input#name')[0].value,
+              date: S('input#date')[0].value,
+              message: S('textarea#message')[0].value,
               recipient: S('input#email')[0].value,
               sender: S('input#email')[1].value,
-              star_type: S(),
+              starType: selectedType,
               uniqueId: star.uniqueId,
             });
 
-            console.log('get stars: ', getStars());
+            // console.log('get stars: ', getStars());
 
 
-
+            console.log('input value: ', S('input#name'));
             // clear the form
             S('input#name')[0].value = "";
             S('input#email')[0].value = "";
             S('input#email')[1].value = "";
           })
-        console.log('vs: ', vs);
+        // console.log('vs: ', vs);
       });
       </script>
     </div>
@@ -178,7 +188,6 @@
 
     <script language="javascript" type="text/javascript" src="formatexamples.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <script type="module" src="back/db.js"></script> -->
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

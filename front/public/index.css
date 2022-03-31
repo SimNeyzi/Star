@@ -5,7 +5,6 @@
   height:80%;
   overflow: hidden;
   /* display: flex; */
-
   /* justify-content: center; */
   /* align-items: center; */
   margin: auto;
@@ -39,6 +38,16 @@ body {
   margin: 0;
 }
 
+.heading {
+  color: azure;
+  font-size: 44px;
+  text-align: center;
+  /* border: 2px solid red; */
+  height: 10vh;
+  margin: auto;
+  padding: 2em;
+  font-weight: 700;
+}
 
 #formContainer {
   display: flex;
@@ -46,7 +55,7 @@ body {
   justify-content: center;
   align-items: center;
   color: azure;
-  width: 40%;
+  width: 50%;
   /* margin-top: 60%; */
   margin: auto;
   padding: 1em;
@@ -55,16 +64,25 @@ body {
   border-radius: 10px 100px / 120px;
 }
 
-.name, .email {
+.name, .date, .message, .email{
   padding: 1em;
   margin: auto;
   font-size: 18px;
 }
 
-#name, #email {
+#name, #date, #email {
   width: 30vh;
   height: 7vh;
   border: 2px solid blueviolet;
+  font-size: 18px;
+}
+
+textarea {
+  max-width: 100%;
+  width: 30vh;
+  height: 14vh;
+  padding: 1em;;
+  /* line-height: 1.5; */
   font-size: 18px;
 }
 
@@ -171,9 +189,9 @@ body {
 
 #optionsWrapper {
   /* max-width: 1000px; */
-  margin: 0 auto;
+  margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   grid-gap: 16px;
   padding: 0 20px;

@@ -2467,16 +2467,15 @@ VirtualSky.prototype.pickStar = function(starType){
 		}
 	}
 
-	if (starType === 'standard') {
+	if (starType === 'standard' && standard.length !== 0) {
 		selectStandard(standard);
-	} else {
+	} else if(starType === 'bright' && bright.length !== 0) {
 		selectBright(bright);
 	}
 
 
 	function selectStandard(standard) {
 		let random = Math.floor(Math.random() * 117955)
-
 
 		for (let i = 0; i < standard.length; i++) {
 
@@ -2502,13 +2501,15 @@ VirtualSky.prototype.pickStar = function(starType){
 		let random = Math.floor(Math.random() * 117955)
 		for (let i = 0; i < bright.length; i++) {
 			if (bright[i][0] === random) {
-				return {
+				let star = {
 					id: bright[i][0],
 					mag: bright[i][1],
 					ra: bright[i][2],
 					dec: bright[i][3],
 					uniqueId: random
 				}
+				starObj = star;
+				return star;
 			}
 		}
 
