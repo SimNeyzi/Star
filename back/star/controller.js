@@ -2,6 +2,7 @@ const pool = require('../db');
 const queries = require('./queries');
 
 const getStars = (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   pool.query(queries.getStars, (err, results) => {
     if (err) throw error;
     res.status(200).json(results.rows);
@@ -17,19 +18,12 @@ const getStarById = (req, res) => {
 }
 
 const addStar = (req, res) => {
-  const { name, email, age, dob} = req.body;
+  console.log('req body: ', req.body)
 
-  // check if email exists
-  pool.query(queries.checkEmailExists, [email], (err, results) => {
-    if (results.rows.length) {
-      res.send("Email already exists");
-    }
-  })
-
-  // add star to do db
-  pool.query(queries.addStar, [name, email, age, dob], (err, results) => {
+  const {star_name, recipient, sender} = req.body;
+  pool.query(queries.addStar, [star_name, recipient, sender], (err, results) => {
     if (err) throw err;
-    res.status(201).send("Star created successfully");
+    res.status(201).send('Star is added to the db')
   })
 }
 

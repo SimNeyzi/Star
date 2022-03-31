@@ -163,8 +163,6 @@ S.query = function() {
 /*! VirtualSky */
 function VirtualSky(input){
 
-	// this.version = "0.7.7";
-
 	this.ie = false;
 	this.excanvas = (typeof G_vmlCanvasManager != 'undefined') ? true : false;
 	/*@cc_on
@@ -330,7 +328,7 @@ function VirtualSky(input){
 		},
 	};
 
-	// Data for stars < mag 4.5 or that are a vertex for a constellation line - 20 kB [id, mag, right ascension, declination]
+	// Data for stars [id, mag, right ascension, declination]
 	// index with Hipparcos number
 	this.stars = this.convertStarsToRadians(
 		starsData
@@ -410,17 +408,17 @@ function VirtualSky(input){
 	this.language = (typeof this.q.lang==="string") ? this.q.lang : (typeof this.setlang==="string" ? this.setlang : (navigator) ? (navigator.userLanguage||navigator.systemLanguage||navigator.language||browser.language) : "");
 	var fromqs = (typeof this.q.lang==="string" || typeof this.setlang==="string");
 	this.langs = {
-		'ar': { "language": {"name": "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;","alignment": "right" } },
-		'cs': { "language": {"name": "&#268;e&#353;tina","alignment": "left" } },
-		'de': { "language": {"name": "Deutsch","alignment": "left" } },
+		// 'ar': { "language": {"name": "&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;","alignment": "right" } },
+		// 'cs': { "language": {"name": "&#268;e&#353;tina","alignment": "left" } },
+		// 'de': { "language": {"name": "Deutsch","alignment": "left" } },
 		'en': { "language": {"name": "English","alignment": "left" } },
-		'es': { "language": {"name": "Espa&#241;ol","alignment": "left" } },
-		'fr': { "language": {"name": "Fran&#231;ais","alignment": "left" } },
-		'gl': { "language": {"name": "Galego","alignment": "left" } },
-		'it': { "language": {"name": "Italiano","alignment": "left" } },
-		'nl': { "language": {"name": "Nederlands","alignment": "left" } },
-		'pl': { "language": {"name": "Polski","alignment": "left" } },
-		'pt': { "language": {"name": "Portugu&#234;s","alignment": "left" } },
+		// 'es': { "language": {"name": "Espa&#241;ol","alignment": "left" } },
+		// 'fr': { "language": {"name": "Fran&#231;ais","alignment": "left" } },
+		// 'gl': { "language": {"name": "Galego","alignment": "left" } },
+		// 'it': { "language": {"name": "Italiano","alignment": "left" } },
+		// 'nl': { "language": {"name": "Nederlands","alignment": "left" } },
+		// 'pl': { "language": {"name": "Polski","alignment": "left" } },
+		// 'pt': { "language": {"name": "Portugu&#234;s","alignment": "left" } },
 	}; // The contents of the language will be loaded from the JSON language file
 	this.lang = this.langs.en;	// default
 
@@ -2450,26 +2448,74 @@ VirtualSky.prototype.addPointer = function(input){
 	return (this.pointers.length);
 };
 
-VirtualSky.prototype.pickRandomStar = function(){
+VirtualSky.prototype.pickStar = function(starType){
 	let random = Math.floor(Math.random() * 117955)
 	// console.log('random: ', random);
-	// console.log('my starz: ',this.stars);
-	for (let i = 0; i < this.stars.length; i++) {
-		if (this.stars[i][0] === random) {
-			console.log('selected star: ', this.stars[i])
-			// return(this.stars[i]);
+	console.log('my starz: ',this.stars);
 
-			return (
-				{
-					id: this.stars[i][0],
-					mag: this.stars[i][1],
-					ra: this.stars[i][2],
-					dec: this.stars[i][3],
-					uniqueId: random,
-				}
-			)
+	let standard = [];
+	let bright = [];
+	let starObj;
+
+	if (starType === 'standard') {
+		for (let i = 0; i < this.stars.length; i++) {
+			if (this.stars[i][1] < 6.5) {
+				standard.push(this.stars[i]);
+			} else {
+				bright.push(this.stars[i]);
+			}
 		}
 	}
+
+	if (starType === 'standard') {
+		selectStandard(standard);
+	} else {
+		selectBright(bright);
+	}
+
+
+	function selectStandard(standard) {
+		let random = Math.floor(Math.random() * 117955)
+
+
+		for (let i = 0; i < standard.length; i++) {
+
+			if (standard[i][0] === random) {
+				console.log('standard[i]: ', standard[i]);
+				let star = {
+					id: standard[i][0],
+					mag: standard[i][1],
+					ra: standard[i][2],
+					dec: standard[i][3],
+					uniqueId: random
+				}
+				console.log('yildiz: ', star);
+				starObj = star;
+				return star;
+			}
+		}
+		console.log('here random: ', random);
+		selectStandard(standard);
+	}
+
+	function selectBright(bright) {
+		let random = Math.floor(Math.random() * 117955)
+		for (let i = 0; i < bright.length; i++) {
+			if (bright[i][0] === random) {
+				return {
+					id: bright[i][0],
+					mag: bright[i][1],
+					ra: bright[i][2],
+					dec: bright[i][3],
+					uniqueId: random
+				}
+			}
+		}
+
+		selectBright(bright);
+	}
+
+	return starObj;
 }
 
 VirtualSky.prototype.mapStarCards = function(cards){

@@ -1,11 +1,15 @@
 const express = require('express');
 const starRoutes = require ('./star/routes');
+const cors = require('cors');
 
 const app = express()
+app.use(cors());
 const port = 3001
 const path = require('path')
 
 app.use(express.json());
+console.log('dir name: ', process.cwd());
+app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.static('public'));
 
