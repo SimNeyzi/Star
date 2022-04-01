@@ -113,17 +113,16 @@
                 vs.panTo(value);
           });
 
-          // let cards = [];
-          let selectedType;
+          let type;
 
           S('div.card').on('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
 
             if (event.currentTarget.outerText === 'Visible') {
-              selectedType = 'standard'
+              type = 'visible'
             } else {
-              selectedType = 'bright'
+              type = 'bright'
             }
           })
 
@@ -134,16 +133,15 @@
 
             // star type code here
 
-            console.log('selected type: ', selectedType);
-            // console.log('burasi: ',vs.pickStar(selectedType));
+            console.log('selected type: ', type);
+            // console.log('burasi: ',vs.pickStar(type));
 
-            let star = vs.pickStar(selectedType);
+            let star = vs.pickStar(type);
 
             console.log('picked star: ', star);
 
-
-
-            vs.addPointer({
+            if(star) {
+              vs.addPointer({
                 ra:star.ra,
                 dec:star.dec,
                 label:S('input#name')[0].value,
@@ -155,6 +153,9 @@
                 uniqueId: star.uniqueId,
                 // style: "border-radius:50px;"
             })
+            }
+
+
 
             // console.log('random star: ', star);
             star.label = S('input#name')[0].value;
@@ -166,14 +167,14 @@
               message: S('textarea#message')[0].value,
               recipient: S('input#email')[0].value,
               sender: S('input#email')[1].value,
-              starType: selectedType,
+              starType: type,
               uniqueId: star.uniqueId,
             });
 
             // console.log('get stars: ', getStars());
 
 
-            console.log('input value: ', S('input#name'));
+
             // clear the form
             S('input#name')[0].value = "";
             S('input#email')[0].value = "";

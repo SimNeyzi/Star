@@ -2444,48 +2444,48 @@ VirtualSky.prototype.addPointer = function(input){
 		this.pointers[i] = p;
 	}
 	//console.log('unique id is: ', p.uniqueId);
-	console.log('pointers: ', this.pointers);
+	// console.log('pointers: ', this.pointers);
 	return (this.pointers.length);
 };
 
 VirtualSky.prototype.pickStar = function(starType){
 	let random = Math.floor(Math.random() * 117955)
 	// console.log('random: ', random);
-	console.log('my starz: ',this.stars);
+	// console.log('my starz: ',this.stars);
 
-	let standard = [];
+	let visible = [];
 	let bright = [];
 	let starObj;
 
-	if (starType === 'standard') {
-		for (let i = 0; i < this.stars.length; i++) {
-			if (this.stars[i][1] < 6.5) {
-				standard.push(this.stars[i]);
-			} else {
-				bright.push(this.stars[i]);
-			}
+	// condition to push into visible and bright arrays
+	for (let i = 0; i < this.stars.length; i++) {
+		if (this.stars[i][1] < 6.5) {
+			visible.push(this.stars[i]);
+		} else {
+			bright.push(this.stars[i]);
 		}
 	}
 
-	if (starType === 'standard' && standard.length !== 0) {
-		selectStandard(standard);
+
+	if (starType === 'visible' && visible.length !== 0) {
+		selectVisible(visible);
 	} else if(starType === 'bright' && bright.length !== 0) {
 		selectBright(bright);
 	}
 
 
-	function selectStandard(standard) {
+	function selectVisible(visible) {
 		let random = Math.floor(Math.random() * 117955)
 
-		for (let i = 0; i < standard.length; i++) {
+		for (let i = 0; i < visible.length; i++) {
 
-			if (standard[i][0] === random) {
-				console.log('standard[i]: ', standard[i]);
+			if (visible[i][0] === random) {
+				console.log('visible[i]: ', visible[i]);
 				let star = {
-					id: standard[i][0],
-					mag: standard[i][1],
-					ra: standard[i][2],
-					dec: standard[i][3],
+					id: visible[i][0],
+					mag: visible[i][1],
+					ra: visible[i][2],
+					dec: visible[i][3],
 					uniqueId: random
 				}
 				console.log('yildiz: ', star);
@@ -2493,8 +2493,8 @@ VirtualSky.prototype.pickStar = function(starType){
 				return star;
 			}
 		}
-		console.log('here random: ', random);
-		selectStandard(standard);
+		// console.log('random: ', random);
+		selectVisible(visible);
 	}
 
 	function selectBright(bright) {
