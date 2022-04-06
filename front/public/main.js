@@ -1,28 +1,39 @@
 function getStars () {
   axios
     .get('http://localhost:3001/api/stars', {timeout: 5000})
-    .then(res => {console.log('data: ', res.data); mapStarCards(res.data)})
+    .then(res => {mapStarCards(res.data)})
+    // .then((data) => console.log('res.data: ', data))
     .catch(err => console.log(err))
 }
 
-const mapStarCards = async function(card){
+
+const addPointer = function(input){
+  return input
+};
+
+
+const mapStarCards = function(card){
   console.log('card: ', card);
 	S("div#card").remove()
 	S("div#cardsContainer").remove();
-	await card.map((card) => S("div#cards").prepend(`<div id="cardsContainer">${card.star_name}${card.recipient}</div>`));
+	card.map((card) => S("div#cards").prepend(`<div id="card">Name: ${card.star_name}<br>Unique ID: ${card.uniqueid}<br>Magnitute: ${card.mag}</div>`));
+
+  // return 'sim';
 }
 
 function addStar(star) {
   axios
     .post('http://localhost:3001/api/stars', {
       starName: star.starName,
-      date: star.date,
-      message: star.message,
-      recipient: star.recipient,
+      // recipient: star.recipient,
       sender: star.sender,
-      starType: star.starType,
-      uniqueId: star.uniqueId
+      uniqueId: star.uniqueId,
+      message: star.message,
+      ra: star.ra,
+      dec: star.dec,
+      mag: star.mag,
     })
+    .then(() => getStars())
     .catch(err => console.log(err));
 }
 

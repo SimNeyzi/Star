@@ -2448,72 +2448,24 @@ VirtualSky.prototype.addPointer = function(input){
 	return (this.pointers.length);
 };
 
-VirtualSky.prototype.pickStar = function(starType){
+VirtualSky.prototype.pickStar = function(){
 	let random = Math.floor(Math.random() * 117955)
 	// console.log('random: ', random);
 	// console.log('my starz: ',this.stars);
 
-	let visible = [];
-	let bright = [];
 	let starObj;
 
-	// condition to push into visible and bright arrays
 	for (let i = 0; i < this.stars.length; i++) {
-		if (this.stars[i][1] < 6.5) {
-			visible.push(this.stars[i]);
-		} else {
-			bright.push(this.stars[i]);
-		}
-	}
-
-
-	if (starType === 'visible' && visible.length !== 0) {
-		selectVisible(visible);
-	} else if(starType === 'bright' && bright.length !== 0) {
-		selectBright(bright);
-	}
-
-
-	function selectVisible(visible) {
-		let random = Math.floor(Math.random() * 117955)
-
-		for (let i = 0; i < visible.length; i++) {
-
-			if (visible[i][0] === random) {
-				console.log('visible[i]: ', visible[i]);
-				let star = {
-					id: visible[i][0],
-					mag: visible[i][1],
-					ra: visible[i][2],
-					dec: visible[i][3],
-					uniqueId: random
-				}
-				console.log('yildiz: ', star);
-				starObj = star;
-				return star;
+		if (this.stars[i][0] === random) {
+			let star = {
+				id: this.stars[i][0],
+				mag: this.stars[i][1],
+				ra: this.stars[i][2],
+				dec: this.stars[i][3],
+				uniqueId: random
 			}
+			starObj = star;
 		}
-		// console.log('random: ', random);
-		selectVisible(visible);
-	}
-
-	function selectBright(bright) {
-		let random = Math.floor(Math.random() * 117955)
-		for (let i = 0; i < bright.length; i++) {
-			if (bright[i][0] === random) {
-				let star = {
-					id: bright[i][0],
-					mag: bright[i][1],
-					ra: bright[i][2],
-					dec: bright[i][3],
-					uniqueId: random
-				}
-				starObj = star;
-				return star;
-			}
-		}
-
-		selectBright(bright);
 	}
 
 	return starObj;

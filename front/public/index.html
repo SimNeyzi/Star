@@ -16,19 +16,13 @@
   <body>
     <div id="root"></div>
     <div class="content gradient__bg">
-      <div class="heading">Name a Star</div>
+      <div class="heading">950 stars remaining of visibility magnitute 11</div>
+      <div class="heading" id="nameStar">Name Your Star</div>
       <form id="formContainer">
         <div class="name">
           <label for="name">Star Name: </label>
           <div>
             <input type="text" name="name" id="name">
-          </div>
-        </div>
-
-        <div class="date">
-          <label for="date">Date:</label>
-          <div>
-            <input type="date" name="date" id="date">
           </div>
         </div>
 
@@ -41,51 +35,26 @@
         </div>
 
         <div class="email">
-          <label for="email">Recipient: </label>
-          <div>
-            <input type="email" name="email" id="email">
-          </div>
-        </div>
-
-        <div class="email">
           <label for="email">Your Email: </label>
           <div>
             <input type="email" name="email" id="email">
           </div>
         </div>
-
-        <div id="options">
-          <div class="h1">Brightness of the Star</div>
-          <div id="optionsWrapper">
-            <div class="card">
-              <img src="icon1.png" alt="icon1" />
-              <div class="h2">Visible</div>
-
-            </div>
-            <div class="card">
-              <img src="icon2.png" alt="icon1" />
-              <div class="h2">Bright</div>
-
-            </div>
-          </div>
-        </div>
-
-
-
         <div class="submit">
           <input type="submit" id="submit" value="Send">
         </div>
-      </form>
+        </div>
 
+      </form>
+      <div id="cards"></div>
       <div class="search">
         <input class="searchInput"></input>
         <button id="search">Search</button>
-    </div>
-      <div id="cards"></div>
+      </div>
       <div id="starmap-splash" class="planetarium"></div>
 
       <script>
-      S(document).ready(function() {
+      S(document).ready(async function() {
         var vs = S.virtualsky({
           id:'starmap-splash',
           projection:'gnomic',
@@ -95,11 +64,11 @@
           constellations:true,
           gradient:true,
           cardinalpoints:true,
-          fontsize: '18px',
+          fontsize: '22px',
           // fontfamily: 'Manrope',
           az:90,
           showstarlabels:true,
-          scalestars:1.7,
+          scalestars:2.5,
           allowTransparency:true,
           constellationlabels:true});
 
@@ -126,15 +95,11 @@
             }
           })
 
-          S('input#submit').on('click', function(event) {
+          S('input#submit').on('click', async function(event) {
             event.preventDefault();
             event.stopPropagation();
 
-
-            // star type code here
-
-            console.log('selected type: ', type);
-            // console.log('burasi: ',vs.pickStar(type));
+            // console.log('selected type: ', type);
 
             let star = vs.pickStar(type);
 
@@ -157,29 +122,33 @@
 
 
 
-            // console.log('random star: ', star);
+            console.log('random star: ', star);
             star.label = S('input#name')[0].value;
-
 
             addStar({
               starName: S('input#name')[0].value,
-              date: S('input#date')[0].value,
               message: S('textarea#message')[0].value,
-              recipient: S('input#email')[0].value,
-              sender: S('input#email')[1].value,
-              starType: type,
+              // recipient: S('input#email')[0].value,
+              sender: S('input#email')[0].value,
               uniqueId: star.uniqueId,
+              ra: star.ra,
+              dec: star.dec,
+              mag: star.mag,
             });
 
-            // console.log('get stars: ', getStars());
-
-
+            // let getStars = getStars();
+            // console.log('getStars: ', getStars())
 
             // clear the form
             S('input#name')[0].value = "";
             S('input#email')[0].value = "";
-            S('input#email')[1].value = "";
+            // S('input#email')[1].value = "";
           })
+
+
+          getStars();
+          let addStarsFromDb = await getStars();
+          console.log('get stars: ', addStarsFromDb);
         // console.log('vs: ', vs);
       });
       </script>

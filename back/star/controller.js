@@ -18,10 +18,10 @@ const getStarById = (req, res) => {
 }
 
 const addStar = (req, res) => {
-  console.log('req body: ', req.body)
+  // console.log('req body: ', req.body)
 
-  const {starName, date, message, recipient, sender, starType, uniqueId} = req.body;
-  pool.query(queries.addStar, [starName, date, message, recipient, sender, starType, uniqueId], (err, results) => {
+  const {starName, sender, uniqueId, message, ra, dec, mag} = req.body;
+  pool.query(queries.addStar, [starName, sender, uniqueId, message, ra, dec, mag], (err, results) => {
     if (err) throw err;
     res.status(201).send('Star is added to the db')
   })

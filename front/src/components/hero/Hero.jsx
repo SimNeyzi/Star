@@ -21,7 +21,7 @@ const Hero = () => {
         </HeroP>
         <HeroBtnWrapper>
           <Button
-          to='signup'
+          to='nameStar'
           onMouseEnter={onHover}
           onMouseLeave={onHover}
           primary='true'
