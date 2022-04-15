@@ -15,44 +15,118 @@
   </head>
   <body>
     <div id="root"></div>
-    <div class="content gradient__bg">
-      <div class="heading">950 stars remaining of visibility magnitute 11</div>
-      <div class="heading" id="nameStar">Name Your Star</div>
-      <form id="formContainer">
-        <div class="name">
-          <label for="name">Star Name: </label>
-          <div>
-            <input type="text" name="name" id="name">
-          </div>
-        </div>
+    <div class="content">
+      <div>
+        <div class="heading" id="formHeading">950 stars remaining of visibility magnitute 11</div>
 
-        <div class="message">
-          <label for="message">Personalized Message:</label>
-          <div>
+        <form id="formContainer">
+          <div class="formHeading">
+            <div id="nameStar">Name your star</div>
+          </div>
+          <div class="name">
+            <!-- <label for="name">Star Name: </label> -->
+              <input type="text" name="name" id="name" placeholder="Star name">
+          </div>
+          <div class="message">
+            <!-- <label for="message">Personalized Message:</label> -->
             <textarea id="message" name="message"
               rows="10" cols="1" placeholder="Enter your message here"></textarea>
           </div>
-        </div>
-
-        <div class="email">
-          <label for="email">Your Email: </label>
-          <div>
-            <input type="email" name="email" id="email">
+          <div class="email">
+            <!-- <label for="email">Your Email: </label> -->
+            <input type="email" name="email" id="email" placeholder="Email">
           </div>
-        </div>
-        <div class="submit">
-          <input type="submit" id="submit" value="Send">
-        </div>
-        </div>
+          <div class="submit">
+            <input type="submit" id="submit" value="Buy">
+          </div>
+          <div class="mint">
+            <input type="submit" id="mint" value="Mint NFT">
+          </div>
 
-      </form>
-      <div id="cards"></div>
-      <div class="search">
-        <input class="searchInput"></input>
-        <button id="search">Search</button>
+
+        </form>
+
+
+      <div class="paymentFormContainer">
+        <div class="popup">
+        <div class="close-btn">&times;</div>
+        <form class="paymentForm">
+
+            <div class="row">
+              <div class="col">
+                <h3 class="title">Billing Address</h3>
+                <div class="inputBox">
+                  <span>Full name:</span>
+                  <input type="text" placeholder="John Doe">
+                </div>
+                <div class="inputBox">
+                  <span>Email:</span>
+                  <input type="email" placeholder="johndoe@email.com">
+                </div>
+                <div class="inputBox">
+                  <span>Address:</span>
+                  <input type="text" placeholder="Street address">
+                </div>
+                <div class="inputBox">
+                  <span>City:</span>
+                  <input type="text" placeholder="City">
+                </div>
+                <div class="flex">
+                  <div class="inputBox">
+                    <span>State:</span>
+                    <input type="text" placeholder="State">
+                  </div>
+                  <div class="inputBox">
+                    <span>Zip code:</span>
+                    <input type="text" placeholder="12345">
+                  </div>
+              </div>
+              </div>
+
+              <div class="col">
+                <h3 class="title">Payment</h3>
+                <div class="inputBox">
+                  <span>Cards accepted:</span>
+                  <img src="card_img.png" alt="accepted cards"/>
+                </div>
+                <div class="inputBox">
+                  <span>Name on card:</span>
+                  <input type="text" placeholder="John Doe">
+                </div>
+                <div class="inputBox">
+                  <span>Credit card number:</span>
+                  <input type="number" placeholder="1111-2222-3333-4444">
+                </div>
+                <div class="inputBox">
+                  <span>Exp date:</span>
+                  <input type="number" placeholder="05/22">
+                </div>
+                <div class="inputBox">
+                  <span>CVV:</span>
+                  <input type="text" placeholder="123">
+                </div>
+              </div>
+
+            </div>
+
+            <input type="submit" value="Checkout" class="checkout-btn">
+
+        </form>
       </div>
-      <div id="starmap-splash" class="planetarium"></div>
-
+    </div>
+      </div>
+      <div>
+        <div class="cardsContainer">
+          <span class="arrow" id="leftArrow">&#139;</span>
+          <span class="arrow" id="rightArrow">&#155;</span>
+          <section id="pages"></section>
+        </div>
+        <div class="search">
+          <input class="searchInput" placeholder="Unique ID"></input>
+          <button id="search">Search</button>
+        </div>
+        <div id="starmap-splash" class="planetarium"></div>
+    </div>
       <script>
       S(document).ready(async function() {
         var vs = S.virtualsky({
@@ -84,16 +158,6 @@
 
           let type;
 
-          S('div.card').on('click', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            if (event.currentTarget.outerText === 'Visible') {
-              type = 'visible'
-            } else {
-              type = 'bright'
-            }
-          })
 
           S('input#submit').on('click', async function(event) {
             event.preventDefault();
@@ -141,23 +205,66 @@
 
             // clear the form
             S('input#name')[0].value = "";
+            S('textarea#message')[0].value = "";
             S('input#email')[0].value = "";
             // S('input#email')[1].value = "";
           })
 
 
           getStars();
-          let addStarsFromDb = await getStars();
-          console.log('get stars: ', addStarsFromDb);
+          // let addStarsFromDb = await getStars();
+          // console.log('get stars: ', addStarsFromDb);
         // console.log('vs: ', vs);
       });
       </script>
     </div>
 
     <!-- <div id="root2"></div> -->
-
+    <div id="root2"></div>
     <script language="javascript" type="text/javascript" src="formatexamples.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
+<script type="text/javascript">
+  const arrow = document.getElementsByClassName('arrow');
+  const div = document.getElementsByClassName('card');
+
+  let l = 0;
+
+  arrow[1].addEventListener("click", () => {
+    console.log('clicked')
+    l++;
+    for (const i of div) {
+      if(l === 0) {i.style.left = "0px";}
+      if(l === 1) {i.style.left = "-350px";}
+      if(l === 2) {i.style.left = "-700px";}
+      if(l === 3) {i.style.left = "-1050px";}
+      if(l > 3) {l = 3}
+    }
+
+  })
+
+  arrow[0].addEventListener("click", () => {
+    console.log('clicked')
+    l--;
+    for (const i of div) {
+      if(l === 0) {i.style.left = "0px";}
+      if(l === 1) {i.style.left = "-350px";}
+      if(l === 2) {i.style.left = "-700px";}
+      if(l === 3) {i.style.left = "-1050px";}
+      if(l < 0) {l = 0}
+    }
+
+  })
+</script>
+<script type="text/javascript">
+
+  document.querySelector("#submit").addEventListener("click", function() {
+    document.querySelector(".popup").classList.add("active");
+  });
+
+  document.querySelector(".popup .close-btn").addEventListener("click", function() {
+    document.querySelector(".popup").classList.remove("active");
+  });
+</script>

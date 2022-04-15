@@ -1,8 +1,10 @@
 import React, {Fragment} from 'react';
 import { Button } from '../buttons/Button.jsx';
+import image from './svg-2.svg';
 import { InfoContainer, InfoWrapper, InfoRow, Column1, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, Column2, ImgWrap, Img } from './InfoElements';
 
 const Info = ({lightBg, id, imgStart, topLine, lightText, headline, darkText, description, buttonLabel, img, alt}) => {
+
   return (
     <>
       <InfoContainer lightBg={lightBg} id={id}>
@@ -20,7 +22,8 @@ const Info = ({lightBg, id, imgStart, topLine, lightText, headline, darkText, de
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={img} alt={alt}/>
+                {/* <Img src={img} alt="gift" /> */}
+                <img src={image} alt="gift"/>
               </ImgWrap>
             </Column2>
           </InfoRow>

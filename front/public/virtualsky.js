@@ -2471,13 +2471,6 @@ VirtualSky.prototype.pickStar = function(){
 	return starObj;
 }
 
-VirtualSky.prototype.mapStarCards = function(cards){
-	S("div#card").remove()
-	S("img").remove()
-	S("div#cardsContainer").remove();
-	cards.map((card) => S("div#cards").prepend(`<div id="cardsContainer">${card.label}<img src="./svg-5.svg" "alt="star" id="card"/>${card.uniqueId}</div>`));
-}
-
 VirtualSky.prototype.changeAzimuth = function(inc){
 	this.az_off += (typeof inc==="number") ? inc : 5;
 	this.draw();

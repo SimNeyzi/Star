@@ -12,14 +12,98 @@ const addPointer = function(input){
 };
 
 
-const mapStarCards = function(card){
-  console.log('card: ', card);
-	S("div#card").remove()
-	S("div#cardsContainer").remove();
-	card.map((card) => S("div#cards").prepend(`<div id="card">Name: ${card.star_name}<br>Unique ID: ${card.uniqueid}<br>Magnitute: ${card.mag}</div>`));
 
-  // return 'sim';
-}
+const mapStarCards = function(cards){
+  // console.log('cards: ', cards);
+
+  // clear cards
+  const clear = document.getElementById('pages');
+  clear.textContent = '';
+
+  //define indicies
+  let pageIndex = 1;
+  let counter = 0;
+  let cardIndex = cards.length - 1;
+  let dataIndex = 0;
+
+  let pages = document.getElementById('pages');
+
+  function addPage() {
+    const newPage = document.createElement("div");
+    newPage.classList.add("page");
+    newPage.id = `page${pageIndex}`
+    pages.append(newPage);
+    const container = document.createElement("div");
+    container.id = `container${pageIndex}`;
+    container.classList.add('container');
+    let pageChild = document.getElementById(`page${pageIndex}`);
+    pageChild.append(container);
+    pageIndex++;
+  }
+
+  function addCardToPage() {
+
+    if (counter === 0) {
+      addPage();
+    }
+
+    let selectContainer = document.getElementById(`container${pageIndex - 1}`);
+    // console.log(selectContainer);
+    const cardDiv = document.createElement("div");
+
+    cardDiv.classList.add('card');
+    selectContainer.append(cardDiv);
+    const currentCard = document.getElementsByClassName(`card`)[dataIndex]
+    dataIndex++;
+
+    console.log(currentCard);
+
+    const cardImage = document.createElement("img");
+    cardImage.src="icons8-star.png";
+    cardImage.alt = "star icon";
+    cardImage.classList.add('starIcon');
+
+    currentCard.append(cardImage);
+
+    let starName = cards[cardIndex].star_name;
+    let name = document.createElement("div");
+    name.classList.add('starName');
+    name.textContent = starName;
+
+    let uniqueId = cards[cardIndex].uniqueid;
+    let  uId= document.createElement("div");
+    uId.classList.add('uniqueId');
+    uId.textContent = `Unique id: ${uniqueId}`;
+    console.log('unique id: ', cards[cardIndex]);
+
+
+    let mag = cards[cardIndex].mag;
+    let magDiv = document.createElement("div");
+    magDiv.classList.add('mag');
+    magDiv.textContent = `Magnitude:  ${mag}`;
+    // console.log('mag: ', mag);
+
+    cardIndex--;
+
+    let wrap = document.createElement("div");
+    wrap.classList.add("data");
+
+    currentCard.appendChild(wrap);
+    wrap.appendChild(name);
+    wrap.appendChild(uId);
+    wrap.appendChild(magDiv);
+    // 12 card for each page 3 x 4
+    if (counter === 11) {
+      counter = 0;
+    } else {
+      counter++;
+    }
+  }
+  for (let i = 0; i < cards.length; i++) {
+    addCardToPage();
+  }
+};
+
 
 function addStar(star) {
   axios

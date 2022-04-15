@@ -9,13 +9,13 @@ const getStars = (req, res) => {
   });
 };
 
-const getStarById = (req, res) => {
-  const id = parseInt(req.params.id);
-  pool.query(queries.getStarById, [id], (err, results) => {
-    if (err) throw err;
-    res.status(200).json(results.rows);
-  })
-}
+// const getStarById = (req, res) => {
+//   const id = parseInt(req.params.id);
+//   pool.query(queries.getStarById, [id], (err, results) => {
+//     if (err) throw err;
+//     res.status(200).json(results.rows);
+//   })
+// }
 
 const addStar = (req, res) => {
   // console.log('req body: ', req.body)
@@ -62,7 +62,6 @@ const updateStar = (req, res) => {
 
 module.exports = {
   getStars,
-  getStarById,
   addStar,
   removeStar,
   updateStar,

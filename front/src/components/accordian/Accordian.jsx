@@ -16,23 +16,25 @@ const AccordianSection = styled.div`
 
 const Container = styled.div`
   position: absolute;
-  width: 80%;
+  width: 85%;
   top: 15%;
   bottom: 15%;
+  height: auto;
   margin: auto;
-  // border: 2px solid #f45216;
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,59,203,1) 200%);
+  border-radius: 30px;
   // box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
 `
 
 const Wrap = styled.div`
-  background: #031b34;
+
   color: #fff;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  text-align: center;
   cursor: pointer;
+
 
   .question {
     padding: 2rem;
@@ -41,6 +43,7 @@ const Wrap = styled.div`
 
   #iconSpan {
     margin-right: 1.5rem;
+    margin-top: 1.5rem;
   }
 `
 
@@ -83,16 +86,16 @@ const Accordian = () => {
         <Container>
           {Data.map((item, index) => {
             return(
-              <>
-                <Wrap onClick={() => toggleIcon(index)} key={index}>
-                  <p class="question">{item.question}</p>
+              <div key={index}>
+                <Wrap onClick={() => toggleIcon(index)}>
+                  <p className="question">{item.question}</p>
                   <span id="iconSpan">{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                 </Wrap>
                 {clicked === index ?
                   (<Dropdown>
-                    <p class="answer">{item.answer}</p>
+                    <p className="answer">{item.answer}</p>
                   </Dropdown>) : null}
-              </>
+              </div>
             )
           })}
         </Container>
