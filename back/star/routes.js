@@ -4,6 +4,7 @@ const controller = require('./controller');
 
 const router = Router();
 
+router.get('/', controller.getPointers);
 router.get('/', controller.getStars);
 router.post('/', controller.addStar);
 // router.get('/:id', controller.getStarById);

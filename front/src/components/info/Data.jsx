@@ -1,19 +1,14 @@
 export const homeObjOne = {
   id: 'about',
-  lightBg: false,
-  lightText: false,
   lightTextDesc: true,
   topLine: 'Name a star',
-  headline: 'A gift that will be there no mather what comes in the distant future',
-  description: 'With this special and unique present, you not only generate happines and excitement but also create a long-lasting memory.',
-  buttonLabel: 'Name a star',
+  headline: "A gift that will truly last forever",
+  description: "Maya mints an NFT - unique digital collectable on the Ethereum blockchain. Each NFT is uniquely designed by a world famous artist using the Hipparcos star catalog. Your star's name is also recorded in a publicly available database." ,
+  buttonLabel: 'Learn More',
   imgStart:false,
-  img: require('./png-6.png').default,
   alt: 'Exciting gift',
   dark: true,
   primary: true,
-  darkText: false
-
 }
 
 

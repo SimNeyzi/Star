@@ -4,7 +4,19 @@ const queries = require('./queries');
 const getStars = (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   pool.query(queries.getStars, (err, results) => {
-    if (err) throw error;
+    console.log('HERE');
+    if (err) throw err;
+    res.status(200).json(results.rows);
+  });
+};
+
+
+
+
+const getPointers = (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  pool.query(queries.getPointers, (err, results) => {
+    if (err) throw err;
     res.status(200).json(results.rows);
   });
 };
@@ -61,6 +73,7 @@ const updateStar = (req, res) => {
 }
 
 module.exports = {
+  getPointers,
   getStars,
   addStar,
   removeStar,

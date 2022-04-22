@@ -1,8 +1,8 @@
 #starmap-splash {
   position: absolute;
   box-sizing: border-box;
-  width:90vh;
-  height:60vh;
+  width:80%;
+  height:35%;
   overflow: hidden;
   /* display: flex; */
   /* justify-content: center; */
@@ -32,17 +32,28 @@ body {
   padding-top: 1em;
   /* font-weight: 700; */
   /* border: 2px solid red; */
-  width: 40vh;
+  width: 68%;
 }
 
 .heading {
   color: azure;
-  font-size: 40px;
-  margin: auto;
-  padding: 1em;
+  font-size: 44px;
+  margin-bottom: 0;
+  margin-top: 0;
   text-align: center;
-
   /* font-weight: 700; */
+}
+
+hr {
+  display: block;
+  width: 50%;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+
+  margin: auto;
+  margin-top: 0.6em;
+  padding: 0;
 }
 
 #formContainer {
@@ -55,7 +66,7 @@ body {
   /* margin-top: 60%; */
   margin: auto;
   /* padding: 1em; */
-  height: 50vh;
+  min-height: 60vh;
   /* border: 2px solid blueviolet; */
   border-radius: 30px;
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,59,203,1) 200%);
@@ -64,10 +75,17 @@ body {
   /* border-radius: 10px 100px / 120px; */
 }
 
+#nameStarSub {
+  font-size: 18px;
+  padding-top: 1rem;
+}
+
 .name, .message, .email{
   padding: 0.6em;
   margin: auto;
   font-size: 18px;
+  width: 70%;
+  /* border: 2px solid red; */
 }
 
 textarea, input {
@@ -75,20 +93,20 @@ textarea, input {
 }
 
 #name, #email {
-  width: 40vh;
-  height: 5vh;
+  width: 100%;
+  height: 8vh;
   /* border: 2px solid blueviolet; */
   font-size: 18px;
-  padding: 1em;
+  padding: 1rem;
   background-color : transparent;
   border: 1px solid rgb(0,117,255);
   border-radius: 10px;
   color: white;
+  box-sizing: border-box;
 }
 
 textarea {
-  max-width: 100%;
-  width: 40vh;
+  width: 100%;
   height: 14vh;
   padding: 1em;
   /* line-height: 1.5; */
@@ -97,18 +115,28 @@ textarea {
   border: 1px solid rgb(0,117,255);
   border-radius: 10px;
   color: white;
+  box-sizing: border-box;
   /* font-family: 'Montserrat', sans-serif; */
   /* font-weight: 700; */
 }
+
+
+.buttons {
+  display: flex;
+  margin: auto;
+}
+
+
 
 .submit {
   /* padding-top: 2em;
   padding-bottom: 1em; */
   padding: 2rem;
   /* transform: translate(-20%, -50%); */
-  position: absolute;
-  top: 25%;
-  left: 20%;
+  /* position: absolute;
+  top: 23%;
+  left: 20%; */
+  box-sizing: border-box;
 }
 
 .mint{
@@ -116,17 +144,18 @@ textarea {
   padding-bottom: 1em; */
   /* transform: translate(-20%, -50%); */
   padding: 2rem;
-  position: absolute;
-  top: 25%;
-  left: 50%;
+  /* position: absolute;
+  top: 23%;
+  left: 50%; */
+  box-sizing: border-box;
 }
 
 
 #submit, #mint {
   /* border: 2px solid blueviolet; */
-  border-radius: 40px;
-  width: 30vh;
-  height: 5vh;
+  border-radius: 30px;
+  width: 35vh;
+  height: 7vh;
   font-size: 18px;
   font-weight: 700;
   color: white;
@@ -139,19 +168,23 @@ textarea {
 .popup {
   position: absolute;
   top: -60%;
-  left: 25%;
+  /* left: 15%; */
+  /* right: 15%; */
   opacity: 0;
   transform: translate(-10%, -20%) scale(1.25);
   border-radius: 30px;
   transition: top 0ms ease-in-out 200ms,
               opacity 200ms ease-in-out 0ms,
               transform 20ms ease-in-out 0ms;
+  /* border: 2px solid slateblue; */
 }
 
 .popup.active {
-  top: 6%;
+  /* width: 70%; */
+  top: 20%;
+  /* margin: auto; */
   opacity: 1;
-  transform: translate((-10%, -10%)) scale(1);
+  transform: translate((30%, 40%)) scale(1.25);
 
   transition: top 0ms ease-in-out 0ms,
               opacity 200ms ease-in-out 0ms,
@@ -160,14 +193,14 @@ textarea {
 
 .popup .close-btn {
   position: absolute;
-  top:20px;
-  right: 20px;
+  top:25px;
+  right: 25px;
   width: 25px;
   height: 25px;
   background: #888;
   color: #eee;
   text-align: center;
-  line-height: 20px;
+  line-height: 25px;
   border-radius: 15px;
   cursor: pointer;
 }
@@ -187,18 +220,58 @@ textarea {
   /* z-index: 10; */
 }
 
+.imageWrapper{
+  width: 50vh;
+  height: 150px;
+  display: flex;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  /* margin: auto; */
+  /* border: 2px solid red; */
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,59,203,1) 200%);
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+
+#yellowStar {
+  /* width: 200px; */
+  /* height: 250px; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* margin: auto; */
+  /* border: 2px solid salmon; */
+}
+
+.sampleStarContainer {
+  font-size: 1rem;
+  align-self: center;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+#sampleStarName {
+  font-size: 1.5rem;
+}
+
 .cardsContainer {
   width: 100%;
+  /* height: 30%; */
   /* overflow: hidden; */
   position: relative;
   margin: auto;
+  margin-bottom: 0;
   overflow:scroll;
   /* border: 2px solid yellowgreen; */
 }
 
 #pages {
   width: 75%;
-  height: 85vh;
+  height: 80vh;
   display: flex;
   margin: auto;
   margin-top: 100px;
@@ -244,28 +317,28 @@ textarea {
 .card {
   display: flex;
   position: relative;
-  width: 30%;
+  width: 35vh;
   flex-grow: 1;
   /* flex-direction: column; */
   color: #fff;
   /* box-sizing: border-box; */
-  padding: 2rem;
-  font-size: 16px;
-  align-content: flex-start;
+  padding: 1rem;
+  font-size: 14px;
+  align-content: baseline;
   /* overflow: scroll; */
   /* margin: auto; */
-  margin: 8px;
+  margin: 5px;
   /* width: 30%; */
-  height: 18vh;
+  height: 15vh;
   transition: 0.5s;
   /* border: 2px solid rgb(0,117,255); */
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,28,96,1) 200%);
-  border-radius: 25px;
+  border-radius: 20px;
 }
 
 .starIcon {
-  width: 8vh;
-  height: 8vh;
+  /* width: 20vh; */
+  /* height: 20vh; */
 }
 
 .data {
@@ -285,9 +358,9 @@ textarea {
 
 #leftArrow, #rightArrow {
   position: absolute;
-  top: 44%;
-  color:aliceblue;
-  font-size: 60px;
+  top: 35%;
+  color:#fff;
+  font-size: 80px;
   font-weight: bold;
   cursor: pointer;
   left: 10.5%;
@@ -299,17 +372,16 @@ textarea {
   text-align: right;
 }
 .search {
-  width: 60%;
-  margin-top: 3%;
+  width: 60vh;
   margin-bottom: 3%;
   display: flex;
   justify-content: flex-start;
-  margin-left: 9.5vh;
+  margin-left: 11%;
 }
 
 .searchInput {
   width: 60vh;
-  height: 5vh;
+  height: 7vh;
   border-radius: 30px;
   font-size: 16px;
   color: #fff;
@@ -320,7 +392,7 @@ textarea {
 
 #search {
   width: 15vh;
-  height: 5vh;
+  height: 7vh;
   border-radius: 30px;
   cursor: pointer;
   font-size: 16px;
@@ -412,31 +484,33 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  /* padding: 50px; */
   /* min-height: 80vh; */
-  width: 70%;
+  width: 100%;
   /* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,59,203,1) 200%); */
+  /* border: 2px solid yellowgreen; */
 }
 
 .paymentFormContainer form {
-  padding: 25px;
-  width: 70vh;
-  height: 45vh;
+  padding: 20px;
+  width: 115%;
+  /* height: 45vh; */
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,59,203,1) 200%);
+  /* border: 2px solid red; */
 }
 
 .paymentFormContainer form .row {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap:15px;
 }
 
 .paymentFormContainer form .row .col {
-  flex: 1 1 250px;
+  flex: 1 1;
 }
 
 .paymentFormContainer form .row .col .title {
-  font-size:20px;
+  font-size:18px;
   color: #fff;
   padding-bottom: 5px;
   text-transform: uppercase;
@@ -450,6 +524,7 @@ textarea {
   margin-bottom: 5px;
   display: block;
   color: #fff;
+  font-size: 14px;
 }
 
 .paymentFormContainer form .row .col .inputBox input {
@@ -457,7 +532,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 10px 16px;
-  font-size: 16px;
+  font-size: 14px;
   text-transform: none;
 }
 
@@ -467,7 +542,7 @@ textarea {
 
 .paymentFormContainer form .row .col .flex{
   display: flex;
-  gap: 15px;
+  gap: 12px;
 }
 
 .paymentFormContainer form .row .col .flex .inputBox {
@@ -476,7 +551,7 @@ textarea {
 }
 
 .paymentFormContainer form .row .col .inputBox img {
-  height: 34px;
+  height: 28px;
   margin-top: 5px;
   filter: drop-shadow(0 0 1px #000);
 }

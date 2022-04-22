@@ -4,12 +4,12 @@ import { Link as LinkS } from 'react-scroll';
 
 export const Nav = styled.nav `
   background: rgba(2,0,36,1);
-  height: 50px;
+  height: 10vh;
   // margin-top: -80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -33,7 +33,7 @@ export const NavbarContainer = styled.div`
 export const NavLogo = styled(LinkR)`
   justify-self: flex-start;
   cursor: pointer;
-  font-size:1.2rem;
+  font-size:1.8rem;
   display:flex;
   align-items: center;
   margin-left: 24px;
@@ -95,13 +95,13 @@ export const NavBtn = styled.nav`
     display:none;
   }
 `
-export const NavBtnLink = styled(LinkR)`
+export const NavBtnLink = styled(LinkS)`
   border-radius: 50px;
   background: #f45216;
   white-space: nowrap;
   padding: 5px 17px;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 1rem;
   outline: none;
   border: none;
   cursor: pointer;

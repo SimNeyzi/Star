@@ -8,7 +8,7 @@ const port = 3001
 const path = require('path')
 
 app.use(express.json());
-console.log('dir name: ', process.cwd());
+// console.log('dir name: ', process.cwd());
 app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.static('public'));
@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // })
 
 
+app.use('/api/pointers', starRoutes);
 app.use('/api/stars', starRoutes);
 
 app.listen(port, () => console.log(`app listening on port ${port} on directory ${__dirname}`));

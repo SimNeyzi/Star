@@ -8,7 +8,7 @@ const Navbar = ({ toggle }) => {
     <div className=''>
       <Nav>
         <NavbarContainer>
-          <NavLogo to='/'>Stars</NavLogo>
+          <NavLogo to='/'>Maya</NavLogo>
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
@@ -16,18 +16,18 @@ const Navbar = ({ toggle }) => {
             <NavItem>
               <NavLinks to='about'>About</NavLinks>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLinks to='discover'>Options</NavLinks>
-            </NavItem>
+            </NavItem> */}
             <NavItem>
-              <NavLinks to='services'>Star Finder</NavLinks>
+              <NavLinks to='search'>Star Finder</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to='faq'>FAQ</NavLinks>
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/signin'>Get Started</NavBtnLink>
+            <NavBtnLink to='formHeading'>Get Started</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>

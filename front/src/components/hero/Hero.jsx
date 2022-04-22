@@ -17,9 +17,12 @@ const Hero = () => {
         <ImageBg src={Image} alt="image" />
       </HeroBg>
       <HeroContent>
-        <HeroH1>Open up the sky to others</HeroH1>
+        <HeroH1>Open up the universe to others</HeroH1>
         <HeroP>
-        Name a star and give the brightest gift in the galaxy
+        Name a star and gift it to a loved one
+        </HeroP>
+        <HeroP>
+          Based on cryptocurrency technology, where everyone can partcipate
         </HeroP>
         <HeroBtnWrapper>
           <Button
@@ -29,7 +32,7 @@ const Hero = () => {
           primary='true'
           dark='true'
           >
-            Name a star {hover ? <ArrowForward /> : <ArrowRight />}
+            Mint your star {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </HeroBtnWrapper>
       </HeroContent>

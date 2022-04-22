@@ -1,7 +1,15 @@
-function getStars () {
+function getPointers () {
+  axios
+    .get('http://localhost:3001/api/pointers', {timeout: 5000})
+    .then(res => {mapStarCards(res.data)})
+    // .then((data) => console.log('res.data: ', data))
+    .catch(err => console.log(err))
+}
+
+function getStars() {
   axios
     .get('http://localhost:3001/api/stars', {timeout: 5000})
-    .then(res => {mapStarCards(res.data)})
+    .then(res => console.log('res.data: ', res.data))
     // .then((data) => console.log('res.data: ', data))
     .catch(err => console.log(err))
 }
@@ -59,13 +67,13 @@ const mapStarCards = function(cards){
     console.log(currentCard);
 
     const cardImage = document.createElement("img");
-    cardImage.src="icons8-star.png";
+    cardImage.src="yellowstar2.png";
     cardImage.alt = "star icon";
     cardImage.classList.add('starIcon');
 
     currentCard.append(cardImage);
 
-    let starName = cards[cardIndex].star_name;
+    let starName = cards[cardIndex].pointer_name;
     let name = document.createElement("div");
     name.classList.add('starName');
     name.textContent = starName;
@@ -107,7 +115,7 @@ const mapStarCards = function(cards){
 
 function addStar(star) {
   axios
-    .post('http://localhost:3001/api/stars', {
+    .post('http://localhost:3001/api/pointers', {
       starName: star.starName,
       // recipient: star.recipient,
       sender: star.sender,
@@ -117,7 +125,7 @@ function addStar(star) {
       dec: star.dec,
       mag: star.mag,
     })
-    .then(() => getStars())
+    .then(() => getPointers())
     .catch(err => console.log(err));
 }
 

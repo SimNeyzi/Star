@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="wickedcss.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;700&family=Montserrat:wght@200;700&display=swap" rel="stylesheet">
     <title>Stars</title>
     <script src="extra/highlight.pack.js" type="text/javascript"></script>
+    <script type="text/javascript" src="main.js"></script>
 	  <script src="stuquery.js"></script>
     <script src="starsData.mjs" type="text/javascript"></script>
 	  <script src="virtualsky.js" type="text/javascript"></script>
@@ -17,30 +19,41 @@
     <div id="root"></div>
     <div class="content">
       <div>
-        <div class="heading" id="formHeading">950 stars remaining of visibility magnitute 11</div>
+        <div class="heading">1000 stars remaining</div>
+        <hr/>
+        <div class="imageWrapper">
+          <img id="yellowStar" class="pulse" src="yellowstar2.png" alt="star"/>
+          <div class="sampleStarContainer">
+            <div id="sampleStarName">Jane DOE</div>
+            <div id="sampleStarUniqueid">Unique id: 60637</div>
+            <div id="sampleStarMag">Mag: 8.85 </div>
+            <div id="sampleStarCoor">Coordinates: (3.25, 0.87)</div>
+          </div>
+        </div>
 
         <form id="formContainer">
           <div class="formHeading">
             <div id="nameStar">Name your star</div>
+            <div id="nameStarSub">Each star has magnitude 11 in Johnson V visibility.</div>
+            <div id="nameStarSub">Buying a star costs 0.09 ETH. There are no price tiers; gifting a star costs the same for everyone.</div>
           </div>
           <div class="name">
-            <!-- <label for="name">Star Name: </label> -->
               <input type="text" name="name" id="name" placeholder="Star name">
           </div>
           <div class="message">
-            <!-- <label for="message">Personalized Message:</label> -->
             <textarea id="message" name="message"
               rows="10" cols="1" placeholder="Enter your message here"></textarea>
           </div>
           <div class="email">
-            <!-- <label for="email">Your Email: </label> -->
             <input type="email" name="email" id="email" placeholder="Email">
           </div>
-          <div class="submit">
-            <input type="submit" id="submit" value="Buy">
-          </div>
-          <div class="mint">
-            <input type="submit" id="mint" value="Mint NFT">
+          <div class="buttons">
+            <div class="submit">
+              <input type="submit" id="submit" value="Buy">
+            </div>
+            <div class="mint">
+              <input type="submit" id="mint" value="Mint NFT">
+            </div>
           </div>
 
 
@@ -115,6 +128,9 @@
       </div>
     </div>
       </div>
+
+
+
       <div>
         <div class="cardsContainer">
           <span class="arrow" id="leftArrow">&#139;</span>
@@ -192,7 +208,6 @@
             addStar({
               starName: S('input#name')[0].value,
               message: S('textarea#message')[0].value,
-              // recipient: S('input#email')[0].value,
               sender: S('input#email')[0].value,
               uniqueId: star.uniqueId,
               ra: star.ra,
@@ -200,30 +215,21 @@
               mag: star.mag,
             });
 
-            // let getStars = getStars();
-            // console.log('getStars: ', getStars())
-
             // clear the form
             S('input#name')[0].value = "";
             S('textarea#message')[0].value = "";
             S('input#email')[0].value = "";
-            // S('input#email')[1].value = "";
           })
 
-
           getStars();
-          // let addStarsFromDb = await getStars();
-          // console.log('get stars: ', addStarsFromDb);
-        // console.log('vs: ', vs);
+          getPointers();
       });
       </script>
     </div>
 
-    <!-- <div id="root2"></div> -->
     <div id="root2"></div>
     <script language="javascript" type="text/javascript" src="formatexamples.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
 <script type="text/javascript">
@@ -237,22 +243,22 @@
     l++;
     for (const i of div) {
       if(l === 0) {i.style.left = "0px";}
-      if(l === 1) {i.style.left = "-350px";}
-      if(l === 2) {i.style.left = "-700px";}
-      if(l === 3) {i.style.left = "-1050px";}
+      if(l === 1) {i.style.left = "-46vh";}
+      if(l === 2) {i.style.left = "-92vh";}
+      if(l === 3) {i.style.left = "-138vh";}
       if(l > 3) {l = 3}
     }
 
   })
 
   arrow[0].addEventListener("click", () => {
-    console.log('clicked')
+    // console.log('clicked')
     l--;
     for (const i of div) {
       if(l === 0) {i.style.left = "0px";}
-      if(l === 1) {i.style.left = "-350px";}
-      if(l === 2) {i.style.left = "-700px";}
-      if(l === 3) {i.style.left = "-1050px";}
+      if(l === 1) {i.style.left = "-46vh";}
+      if(l === 2) {i.style.left = "-92vh";}
+      if(l === 3) {i.style.left = "-138vh";}
       if(l < 0) {l = 0}
     }
 

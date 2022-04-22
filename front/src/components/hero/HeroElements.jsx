@@ -24,9 +24,10 @@ export const HeroBg = styled.div`
 
 export const ImageBg = styled.img`
   width: 100%;
-  height: 100%;
+  height: 96vh;
   object-fit: contain;
   opacity: 0.8;
+  margin: auto;
 `
 
 export const HeroContent = styled.div`
