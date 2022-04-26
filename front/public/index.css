@@ -62,7 +62,7 @@ hr {
   /* justify-content: flex-start; */
   align-items: flex-start;
   color: azure;
-  width: 70%;
+  width: 50%;
   /* margin-top: 60%; */
   margin: auto;
   /* padding: 1em; */
@@ -218,44 +218,6 @@ textarea {
   height: 100%;
   position: relative;
   /* z-index: 10; */
-}
-
-.imageWrapper{
-  width: 50vh;
-  height: 150px;
-  display: flex;
-  margin: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  /* margin: auto; */
-  /* border: 2px solid red; */
-  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,59,203,1) 200%);
-  border-radius: 25px;
-  box-sizing: border-box;
-}
-
-#yellowStar {
-  /* width: 200px; */
-  /* height: 250px; */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* margin: auto; */
-  /* border: 2px solid salmon; */
-}
-
-.sampleStarContainer {
-  font-size: 1rem;
-  align-self: center;
-  margin-left: 0;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  box-sizing: border-box;
-}
-
-#sampleStarName {
-  font-size: 1.5rem;
 }
 
 .cardsContainer {
@@ -579,5 +541,89 @@ textarea {
   border-radius: 30px;
 }
 
+.offersContainer {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 3rem;
+  font-size: 2rem;
+  padding: 1rem;
+  border: 2px solid red;
+}
 
+.offers {
+  display: flex;
+}
 
+.imageWrapper{
+  width: 40vh;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  /* margin: auto; */
+  /* margin-top: 2rem; */
+  /* margin-bottom: 2rem; */
+  margin: 2rem;
+  /* margin: auto; */
+  /* border: 2px solid red; */
+  /* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,59,203,1) 200%); */
+  border-radius: 25px;
+  box-sizing: border-box;
+  border: 1px solid rgba(59,59,203,1);
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+#yellowStar {
+  width: 200px;
+  /* height: 250px; */
+  margin: auto;
+  margin-top: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* margin: auto; */
+  /* border: 2px solid salmon; */
+}
+
+#certificate {
+  width: 15vh;
+  height: 15vh;
+  margin: auto;
+  margin-top: 1.5rem;;
+}
+.sampleStarContainer {
+  font-size: 1.2rem;
+  /* align-self: center; */
+  /* margin-left: 0; */
+  /* margin-top: 0; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
+  /* align-content: flex-start; */
+  color: #fff;
+  box-sizing: border-box;
+  /* border: 2px solid yellowgreen; */
+  margin: 0;
+  padding: 1.2rem;
+  line-height: 1.5rem;
+}
+
+#sampleStarName {
+  font-size: 1.3rem;
+}
+
+#NFTHeading, #certificateHeading {
+  font-size: 1.5rem;
+  margin: auto;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+#certificateDes {
+  font-size: 1rem;
+}
