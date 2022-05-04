@@ -66,6 +66,18 @@ const Dropdown = styled.div`
   }
 `
 
+const Heading = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 6rem;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+  box-sizing: border-box;
+`
 
 const Accordian = () => {
   const [clicked, setClicked] = useState(false);
@@ -81,7 +93,9 @@ const Accordian = () => {
 
 
   return(
+
     <IconContext.Provider value = {{ color: '#f45216', size: '25px'}}>
+      <Heading>Frequently Asked Questions</Heading>
       <AccordianSection id="faq">
         <Container>
           {Data.map((item, index) => {

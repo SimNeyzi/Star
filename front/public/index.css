@@ -65,6 +65,7 @@ hr {
   width: 50%;
   /* margin-top: 60%; */
   margin: auto;
+  margin-top: 1rem;
   /* padding: 1em; */
   min-height: 60vh;
   /* border: 2px solid blueviolet; */
@@ -548,14 +549,46 @@ textarea {
   align-items: center;
   width: 70%;
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 4rem;
   font-size: 2rem;
   padding: 1rem;
-  border: 2px solid red;
+  box-sizing: border-box;
+  /* border: 2px solid red; */
+}
+
+.searchH1 {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.searchH2 {
+  color: #fff;
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 8rem;
+  /* margin-bottom: 0; */
+  font-size: 2.5rem;
+  /* padding: 1rem; */
+  box-sizing: border-box;
+}
+
+#openSeaLink {
+  font-size: 0.5rem;
 }
 
 .offers {
   display: flex;
+  box-sizing: border-box;
 }
 
 .imageWrapper{
@@ -575,28 +608,25 @@ textarea {
   border: 1px solid rgba(59,59,203,1);
   justify-content: space-evenly;
   align-items: center;
-
 }
 
 #yellowStar {
-  width: 200px;
-  /* height: 250px; */
-  margin: auto;
-  margin-top: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* margin: auto; */
-  /* border: 2px solid salmon; */
-}
-
-#certificate {
   width: 15vh;
   height: 15vh;
   margin: auto;
-  margin-top: 1.5rem;;
+  margin-top: 1rem;
+  /* margin-bottom: 0; */
 }
+
+#certificate {
+  width: 20vh;
+  height: 20vh;
+  margin: auto;
+  margin-top: 1rem;
+}
+
 .sampleStarContainer {
-  font-size: 1.2rem;
+  /* font-size: 1.5rem; */
   /* align-self: center; */
   /* margin-left: 0; */
   /* margin-top: 0; */
@@ -606,24 +636,34 @@ textarea {
   /* justify-content: flex-start; */
   /* align-content: flex-start; */
   color: #fff;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   /* border: 2px solid yellowgreen; */
-  margin: 0;
-  padding: 1.2rem;
+  /* margin: auto; */
+  padding-top: 0.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
   line-height: 1.5rem;
+  /* border: 2px solid red; */
 }
 
 #sampleStarName {
-  font-size: 1.3rem;
+  font-size: 2rem;
+  margin: auto;
 }
 
 #NFTHeading, #certificateHeading {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin: auto;
-  font-weight: 700;
-  line-height: 2rem;
+  /* font-weight: 700; */
+  /* margin-top: 0; */
+  /* line-height: 2rem; */
+  padding: 1rem;
 }
 
 #certificateDes {
   font-size: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
 }
+

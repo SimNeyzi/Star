@@ -22,6 +22,8 @@
         <div class="heading">1000 stars remaining</div>
         <hr/>
 
+
+
         <form id="formContainer">
           <div class="formHeading">
             <div id="nameStar">Name your star</div>
@@ -36,7 +38,7 @@
               rows="10" cols="1" placeholder="Enter your message here"></textarea>
           </div>
           <div class="email">
-            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="email" name="email" id="email" placeholder="Your email">
           </div>
           <div class="buttons">
             <div class="submit">
@@ -52,21 +54,22 @@
           What does your gift include?
           <div class="offers">
             <div class="imageWrapper">
-              <img id="yellowStar" class="pulse" src="yellowstar2.png" alt="star"/>
+              <img id="yellowStar" class="floater" src="icons18.png" alt="star"/>
+              <div id="NFTHeading">Your NFT for</div>
+              <div id="sampleStarName"></div>
+              <a href="https://testnets.opensea.io/assets/0x5e00c0c0b2afc3d857547cc2847a7d11fb16a4f4/1" id="openSeaLink">See your NFT on OpenSea</a>
               <div class="sampleStarContainer">
-                <div id="NFTHeading">NFT</div>
-                <div id="sampleStarName">Jane DOE</div>
-                <div id="sampleStarUniqueid">Unique id: 60637</div>
-                <div id="sampleStarMag">Mag: 8.85 </div>
-                <div id="sampleStarCoor">Coordinates: (3.25, 0.87)</div>
+
+
               </div>
             </div>
 
             <div class="imageWrapper">
               <img id="certificate" src="certificate2.png" alt="star"/>
+              <div id="certificateHeading">Certificate</div>
+                <div id="certificateDes">Your star will be entered into our decenteralized star registry database. Every certificate bears the offical seal of the registry to guarantee its authenticity.</div>
               <div class="sampleStarContainer">
-                <div id="certificateHeading">Certificate</div>
-                <div id="certificateDes">Your star will be entered into the decenteralized star registry database. Every certificate bears the offical seal of the registry to guarantee its authenticity.</div>
+
               </div>
             </div>
           </div>
@@ -143,17 +146,22 @@
 
 
     <div>
+      <div class="searchH2">Registered Stars</div>
       <div class="cardsContainer">
         <span class="arrow" id="leftArrow">&#139;</span>
         <span class="arrow" id="rightArrow">&#155;</span>
         <section id="pages"></section>
       </div>
+      <div class="searchH1">Search in Decenteralized Star Database</div>
       <div class="search">
         <input class="searchInput" placeholder="Unique ID"></input>
         <button id="search">Search</button>
       </div>
       <div id="starmap-splash" class="planetarium"></div>
     </div>
+
+    <script src="https://unpkg.com/embeddable-nfts/dist/nft-card.min.js"></script>
+
       <script>
         S(document).ready(async function() {
           var vs = S.virtualsky({
@@ -215,6 +223,10 @@
               mag: star.mag,
             });
 
+
+
+
+
             // clear the form
             S('input#name')[0].value = "";
             S('textarea#message')[0].value = "";
@@ -222,7 +234,15 @@
           })
           getStars();
           getPointers();
+
+          S('input#name').on('change',function(event){
+            S('div#sampleStarName')[0].innerText = event.currentTarget.value;
+          });
+
         });
+
+
+
       </script>
     </div>
 

@@ -64,12 +64,13 @@ const mapStarCards = function(cards){
     const currentCard = document.getElementsByClassName(`card`)[dataIndex]
     dataIndex++;
 
-    console.log(currentCard);
+    // console.log(currentCard);
 
     const cardImage = document.createElement("img");
     cardImage.src="yellowstar2.png";
     cardImage.alt = "star icon";
     cardImage.classList.add('starIcon');
+    cardImage.classList.add('pulse');
 
     currentCard.append(cardImage);
 
@@ -82,7 +83,7 @@ const mapStarCards = function(cards){
     let  uId= document.createElement("div");
     uId.classList.add('uniqueId');
     uId.textContent = `Unique id: ${uniqueId}`;
-    console.log('unique id: ', cards[cardIndex]);
+    // console.log('unique id: ', cards[cardIndex]);
 
 
     let mag = cards[cardIndex].mag;
@@ -129,3 +130,7 @@ function addStar(star) {
     .catch(err => console.log(err));
 }
 
+
+function formHandler() {
+
+}
